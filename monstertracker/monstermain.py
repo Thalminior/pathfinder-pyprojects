@@ -48,7 +48,6 @@ class foe:
         self.lvl = totalhd
         self.sillalive = "yes"
 
-
         # created
         self.conbonus = int((self.conscore-10)/2)
         self.hp = ((self.hd + self.conbonus) * self.lvl)
@@ -65,18 +64,16 @@ class foe:
         hitvalue = numtest(messege)
         self.hp = self.hp - hitvalue
 
-        remainmsg = "{0} has {1} hp remaining".format(self.name,self.hp)
-
         if self.hp <= (0 - self.conscore):
             print "{0} is dead".format(self.name)
             self.stillalive = "no"
         else:
-            if self.hp >= self.maxhp:
+            if self.hp > self.maxhp:
                 self.hp = self.maxhp
-                print remainmsg
             else:
-                print remainmsg
-
+                pass
+        self.remainmsg = "{0} has {1}/{2} hp remaining".format(self.name,self.hp,self.maxhp)
+        print self.remainmsg
 
 
 
