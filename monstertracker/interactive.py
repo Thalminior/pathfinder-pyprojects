@@ -13,9 +13,10 @@ import monstermain as mm
 
 # variables
 continueprogram = "y"
+q = "create new foe?"
+
 
 def foecreate():
-    q = "create new foe?"
 
     q = "what is its name?"
     n = raw_input(q)

@@ -38,7 +38,7 @@ class foe:
     creates monster with (name HD LVL DR CON)
     """
 
-    def __init__(self,name,totalhd,hitdie,constitution,damage_reduction=0):
+    def __init__(self,name,totalhd,hitdie,constitution,damage_reduction=0,rmhq="no"):
 
         # inhearant
         self.name = name
@@ -50,8 +50,11 @@ class foe:
 
         # created
         self.conbonus = int((self.conscore-10)/2)
-        self.hp = ((self.hd + self.conbonus) * self.lvl)
-# create hd randomizer and max choice
+        if rmhq == "y":
+            self.hp = ((self.hd + self.conbonus) * self.lvl)
+        else:
+            self.hp = ((random.randint(1,self.hd) + self.conbonus) * self.lvl)
+      
 
         self.maxhp = self.hp
 
