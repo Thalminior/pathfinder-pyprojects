@@ -45,8 +45,18 @@ class foe:
         deals damage and healing to foe
         """
         
-        messege = "enter ammount of damage/healing > "
+        messege = "enter ammount of damage/healing"
         hitvalue = fff.numtest(messege)
+        
+        if hitvalue <= 0:
+            pass
+        else:
+            drq = "apply dr?"
+            applydrq = fff.yesnoquest(drq)
+            if applydrq == "y":
+                hitvalue = hitvalue - self.dr
+            else:
+                pass
         self.hp = self.hp - hitvalue
 
         if self.hp <= (0 - self.conscore):
@@ -64,7 +74,8 @@ class foe:
 
 
 if __name__ == '__main__':
-    mon1 = foe("spider",5,8,19,0,"y")
-    print mon1.conbonus
-    print mon1.maxhp
-    mon1.hpchange()
+    mon1 = foe("spider",5,8,20,5,"y")
+    print "con bonus :",mon1.conbonus
+    print "max hp :",mon1.maxhp
+    while mon1.stillalive == "yes":
+        mon1.hpchange()
