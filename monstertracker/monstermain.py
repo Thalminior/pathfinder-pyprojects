@@ -3,34 +3,16 @@
 """
 monster hp tracker beta.01
 
-to do: create hd randomizer and max choice
+to do: 
 incorperate dr to damage
 create intarctive script to create monster till dead
 """
 
 # imports
 import random
+import funfuncfile as fff
 # variables
 
-
-# functions
-
-
-
-def numtest(q):
-    """
-    checks input for intager
-    :param console num request text<string>:
-    """
-    q = q
-    while True:
-        try:
-            n = int(raw_input(q))
-        except (ValueError, TypeError):
-            print "Not a number! Try again"
-        else:
-            break
-    return n 
 
 # classes
 class foe:
@@ -46,16 +28,16 @@ class foe:
         self.conscore = constitution
         self.hd = hitdie
         self.lvl = totalhd
-        self.sillalive = "yes"
+        self.stillalive = "yes"
 
         # created
         self.conbonus = int((self.conscore-10)/2)
+
         if rmhq == "y":
             self.hp = ((self.hd + self.conbonus) * self.lvl)
         else:
             self.hp = ((random.randint(1,self.hd) + self.conbonus) * self.lvl)
       
-
         self.maxhp = self.hp
 
     def hpchange(self):
@@ -64,7 +46,7 @@ class foe:
         """
         
         messege = "enter ammount of damage/healing > "
-        hitvalue = numtest(messege)
+        hitvalue = fff.numtest(messege)
         self.hp = self.hp - hitvalue
 
         if self.hp <= (0 - self.conscore):
@@ -82,7 +64,7 @@ class foe:
 
 
 if __name__ == '__main__':
-    mon1 = foe("spider",5,8,19)
+    mon1 = foe("spider",5,8,19,0,"y")
     print mon1.conbonus
     print mon1.maxhp
     mon1.hpchange()
