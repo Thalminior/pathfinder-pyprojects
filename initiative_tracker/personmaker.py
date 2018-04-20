@@ -48,23 +48,69 @@ def personlist():
     return s
 
 
-# def turnloop(turnlist):
-#     """
-#     takes list returnes 1 in list iterates though
-#     """
-#     t = turnlist
-#     for i in t
+def turnloop(turnlist):
+    """
+    takes list returnes 1 in list iterates though
+    """
+    t = turnlist
+    print "full list of players:"
+    for t in t:
+        print t
+    
+    # print turnlist[0],"first"
+    # print turnlist[2],"third"
+    
+    done = "n"
+    i = 0
+    rc = 1
+    while done == "n":
+        print "round {0} current turn {1}".format(rc,turnlist[i])
+        n = fff.yesnoquest("is {0} done?".format(turnlist[i]))
+        if n == "y":
+            i = i + 1        
+            if i >= len(turnlist):
+                i = 0
+                rc = rc + 1
+                done = fff.yesnoquest("is combat over?")
+                pass
+            else:
+                pass
+            continue
+        else:
+            print "{0} still needs to go".format(turnlist[i])
+            continue
 
+        
 
 
 def main():
-    done = "no"
+    print "this is a turn initative tracker"
     b = personlist()
-    print group
-    print b
-    while done == "n":
-        done == fff.yesnoquest("done?")
+    print "unordered list --",group
+    print "ordered list --",b
+    turnloop(b)
+    
+def debug():
+    gr = []
+    p = ["rogue",15]
+    w = person(*p)
+    gr.append(w)
+    p = ["wizard",16]
+    w = person(*p)
+    gr.append(w)
+    p = ["fighter",4]
+    w = person(*p)
+    gr.append(w)
+    p = ["cleric",10]
+    w = person(*p)
+    gr.append(w)
+    s = sorted(gr, key=lambda person: person.turn, reverse=True)
+    print "unordered list --",gr
+    print "ordered list --",s
+    turnloop(s)
+
 
 if __name__ == '__main__':
-    main()
-
+    # main()
+    debug()
+    fff.keepopen()

@@ -50,17 +50,6 @@ def main():
     while mon1.stillalive == "yes":
         mon1.hpchange()
     
-
-def keepopen():
-    
-    while True:
-        j = fff.yesnoquest("are you done?")
-        if j == "n":
-            pass
-        else:
-            break
-
-
 if __name__ == '__main__':
     main()
-    keepopen()
+    fff.keepopen()

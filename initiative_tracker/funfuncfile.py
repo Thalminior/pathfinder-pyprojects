@@ -31,6 +31,16 @@ def numtest(q):
     return n
 
 
+def keepopen():
+    while True:
+        j = yesnoquest("are you done?")
+        if j == "n":
+            pass
+        else:
+            break
+
+
+
   
 def main():
     test = numtest("enter a number")
